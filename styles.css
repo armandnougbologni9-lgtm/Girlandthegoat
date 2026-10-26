@@ -149,6 +149,7 @@ h1 em, h2 em { color: var(--orange); font-weight: 500; }
 .site-footer { padding: 3rem clamp(1.5rem, 5vw, 5.75rem) 1.25rem; background: var(--green-deep); color: white; }
 .wordmark--footer { color: white; }.site-footer > p { margin: 1.2rem 0 3rem; color: #d2d7d0; font: italic 1rem var(--serif); }
 .site-footer__bottom { display: flex; justify-content: space-between; gap: 1rem; padding-top: 1.1rem; border-top: 1px solid #ffffff35; color: #d2d7d0; font-size: .62rem; }
+	.site-footer__credit { color: #ffffff; white-space: nowrap; }
 .site-footer__bottom a { color: white; text-decoration: none; }
 
 :focus-visible { outline: 3px solid #d7804c; outline-offset: 4px; }
@@ -306,91 +307,6 @@ h1, h2 { letter-spacing:-.045em; }
 .photo-strip__heading h2 { color:var(--green-deep); }
 .photo-strip__note { color:var(--muted); }
 .photo-card figcaption { color:var(--green-deep); }
-
-/* ==========================================================================
-   Bilingual Language Switcher (FR / EN) & Hero Top Bar
-   ========================================================================== */
-.lang-switcher {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.28rem 0.65rem;
-  border-radius: 999px;
-  background: rgba(49, 72, 59, 0.08);
-  border: 1px solid rgba(49, 72, 59, 0.2);
-  transition: all 0.25s ease;
-  z-index: 10;
-}
-.lang-switcher:hover {
-  background: rgba(49, 72, 59, 0.14);
-  border-color: var(--green);
-}
-.lang-pill {
-  border: none;
-  background: transparent;
-  padding: 0.22rem 0.55rem;
-  border-radius: 999px;
-  color: var(--muted);
-  font-family: var(--sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  transition: all 0.2s ease;
-  line-height: 1;
-}
-.lang-pill:hover {
-  color: var(--green-deep);
-}
-.lang-pill.is-active {
-  background: var(--green);
-  color: #ffffff;
-  box-shadow: 0 2px 6px rgba(36, 55, 46, 0.25);
-}
-.lang-switcher__divider {
-  color: rgba(49, 72, 59, 0.3);
-  font-size: 0.7rem;
-  user-select: none;
-}
-
-/* Hero Quick Language Chip */
-.hero-lang-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.35rem 0.85rem;
-  border-radius: 999px;
-  border: 1px solid rgba(191, 108, 66, 0.35);
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: var(--orange);
-  font-family: var(--sans);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(191, 108, 66, 0.08);
-}
-.hero-lang-chip:hover {
-  background: var(--orange);
-  color: #ffffff;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(191, 108, 66, 0.25);
-}
-.hero-lang-chip__globe {
-  font-size: 0.82rem;
-}
-.hero-lang-chip__arrow {
-  transition: transform 0.2s ease;
-}
-.hero-lang-chip:hover .hero-lang-chip__arrow {
-  transform: translate(2px, -2px);
-}
 
 /* ==========================================================================
    Hero 3D Stage Viewport & Canvas

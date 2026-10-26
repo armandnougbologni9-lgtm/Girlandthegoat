@@ -19,6 +19,35 @@ if (menuToggle && navigation) {
 const year = document.querySelector("#current-year");
 if (year) year.textContent = String(new Date().getFullYear());
 
+// Keep editorial and approval notes out of the public-facing pages.
+document.querySelectorAll(".draft-note, .menu-disclaimer, .service-notice").forEach((note) => note.remove());
+document.querySelectorAll("main p, main span").forEach((copy) => {
+  if (/provisoir|maquette|illustrative unsplash|additional unsplash|droits de réutilisation|références photographiques|photos officielles|reste(nt)? à confirmer|à confirmer|à ajouter|après confirmation|en cours de confirmation|bientôt disponible|aucun message n’est recueilli/i.test(copy.textContent || "")) {
+    copy.remove();
+  }
+});
+document.querySelectorAll(".visit-map-placeholder").forEach((map) => {
+  map.setAttribute("aria-label", "Los Angeles, Californie");
+  const small = map.querySelector("small");
+  if (small) small.remove();
+});
+window.addEventListener("load", () => {
+  document.querySelectorAll(".draft-note, .menu-disclaimer, .service-notice").forEach((note) => note.remove());
+  document.querySelectorAll("main p, main span").forEach((copy) => {
+    if (/provisoir|maquette|unsplash|droits de réutilisation|références photographiques|photos officielles|reste(nt)? à confirmer|à confirmer|à ajouter|après confirmation|en cours de confirmation|bientôt disponible|aucun message n’est recueilli|design test|does not depict/i.test(copy.textContent || "")) {
+      copy.remove();
+    }
+  });
+}, { once: true });
+
+document.querySelectorAll(".site-footer__bottom").forEach((footer) => {
+  footer.querySelector('a[href="#top"]')?.remove();
+  const credit = document.createElement("span");
+  credit.className = "site-footer__credit";
+  credit.textContent = "Powered by EMA";
+  footer.append(credit);
+});
+
 // Image-rich design-test pass: 18 distinct Unsplash photos plus intentional reuse
 // of existing official-site references reaches 24 unique photos across 35 slots.
 const stockPhoto = (id, alt, caption) => ({ id, alt, caption });
@@ -152,254 +181,6 @@ if (pageName === "gallery.html") {
     makePhoto(repeatedRoom, { gallery: true, official: true }),
     makePhoto(repeatedBrunch, { gallery: true, official: true })
   ].forEach((figure) => gallery?.append(figure));
-}
-
-/* ==========================================================================
-   Bilingual Editorial Voice (French by Default, English One-Click Toggle)
-   ========================================================================== */
-const i18n = {
-  fr: {
-    skip_to_content: "Passer au contenu",
-    nav_toggle: "Menu",
-    nav_story: "Notre histoire",
-    nav_menu: "Menu",
-    nav_brunch: "Brunch",
-    nav_gallery: "Galerie",
-    nav_visit: "Venir",
-    nav_reserve: "Réserver une table ↗",
-    hero_eyebrow: "LOS ANGELES · CALIFORNIE",
-    hero_title: "Venez le ventre vide.<br><em>Repartez inspirés.</em>",
-    hero_intro: "Une table vivante pour les esprits curieux. Découvrez des assiettes de saison audacieuses, créées pour être partagées.",
-    hero_reserve_btn: "Réserver votre table ↗",
-    hero_menu_btn: "Découvrir le menu ↓",
-    hero_note: "La bonne cuisine se savoure encore mieux<br>lorsqu’elle est partagée.",
-    hero_lang_btn: "Switch to English",
-    stage_desc: "Une table de restaurant servie avec des verres de vin rouge et un apéritif vous attend.",
-    stage_poster_alt: "Une table de restaurant servie avec des verres de vin rouge et un apéritif vous attend",
-    hero_scroll: "DÉFILER POUR EXPLORER",
-    story_eyebrow: "EN QUELQUES MOTS",
-    story_title: "Un brin d’inattendu.<br><em>Beaucoup à aimer.</em>",
-    story_text: "Nous croyons qu’un grand repas dépasse ce qui se trouve dans l’assiette. C’est le passage des plats, le partage, cet instant « tu dois absolument goûter ça » à travers la table.",
-    story_link: "En savoir plus sur nous ↗",
-    menu_eyebrow: "PENSÉ POUR LE MILIEU DE LA TABLE",
-    menu_title: "Une carte qui invite<br><em>à la découverte.</em>",
-    menu_desc: "Des ingrédients de saison, des associations inattendues et tant de raisons de faire passer une assiette.",
-    dish1_type: "DU POTAGER",
-    dish1_title: "Fraîcheur & caractère",
-    dish1_desc: "Des légumes pleins de personnalité.",
-    dish2_type: "DES CUISINES",
-    dish2_title: "Le réconfort réinventé",
-    dish2_desc: "De grandes assiettes généreuses pensées pour la table.",
-    dish3_type: "À TABLE",
-    dish3_title: "Un plaisir à partager",
-    dish3_desc: "Les assiettes de saison sont toujours meilleures partagées.",
-    menu_btn: "Voir les incontournables du menu ↗",
-    menu_note: "Carte provisoire. Références photographiques officielles sous réserve de validation des droits.",
-    brunch_scribble: "esprit de<br>week-end",
-    brunch_eyebrow: "MATINÉES PAISIBLES, BONNE COMPAGNIE",
-    brunch_title: "Les week-ends sont<br><em>meilleurs ensemble.</em>",
-    brunch_desc: "Faites un peu de place dans votre week-end pour une table remplie de vos plats favoris et un bon verre à la main.",
-    brunch_days: "LE WEEK-END",
-    brunch_hours: "HORAIRES À CONFIRMER",
-    brunch_btn: "Rejoignez-nous pour le brunch ↗",
-    res_eyebrow: "VOTRE TABLE VOUS ATTEND",
-    res_title: "Offrez-vous une belle<br><em>soirée.</em>",
-    res_desc: "Les plus beaux moments naissent lorsque tout le monde se réunit autour de la table.",
-    res_btn: "Réserver une table ↗",
-    res_note: "Lien officiel de réservation ajouté après confirmation du restaurant.",
-    visit_eyebrow: "NOUS TROUVER",
-    visit_title: "Au plaisir de vous voir<br><em>autour de la table.</em>",
-    visit_loc_label: "ADRESSE",
-    visit_loc_val: "Los Angeles, Californie",
-    visit_loc_sub: "Adresse officielle à confirmer",
-    visit_hours_label: "HORAIRES",
-    visit_hours_val: "À très bientôt",
-    visit_hours_sub: "Horaires actuels à confirmer",
-    visit_sayhello_label: "NOUS ÉCRIRE",
-    visit_contact_link: "Contacter le restaurant",
-    visit_contact_sub: "Coordonnées officielles à venir",
-    visit_plan_link: "Préparer votre venue ↗",
-    contact_heading: "Une question ou un événement à célébrer ?",
-    contact_sub: "Coordonnées officielles à venir.",
-    footer_tagline: "Une cuisine de saison. Un accueil généreux. Toujours de la place pour partager.",
-    footer_gathering: "Fait pour se rassembler.",
-    footer_back_top: "Haut de page ↑"
-  },
-  en: {
-    skip_to_content: "Skip to content",
-    nav_toggle: "Menu",
-    nav_story: "Our Story",
-    nav_menu: "Menu",
-    nav_brunch: "Brunch",
-    nav_gallery: "Gallery",
-    nav_visit: "Visit",
-    nav_reserve: "Book a table ↗",
-    hero_eyebrow: "LOS ANGELES · CALIFORNIA",
-    hero_title: "Come hungry.<br><em>Leave inspired.</em>",
-    hero_intro: "A vibrant table for curious appetites. Discover bold seasonal dishes created to be shared.",
-    hero_reserve_btn: "Book your table ↗",
-    hero_menu_btn: "Explore the menu ↓",
-    hero_note: "Great food is best enjoyed<br>when shared around the table.",
-    hero_lang_btn: "Passer en français",
-    stage_desc: "A restaurant table set with glasses of red wine and an appetizer awaits you.",
-    stage_poster_alt: "A restaurant table set with glasses of red wine and an appetizer awaits you",
-    hero_scroll: "SCROLL TO EXPLORE",
-    story_eyebrow: "AT A GLANCE",
-    story_title: "A little unexpected.<br><em>A lot to love.</em>",
-    story_text: "We believe a great meal is about more than what's on the plate. It's the passing of dishes, the sharing, that 'you have to try this' moment across the table.",
-    story_link: "Learn more about us ↗",
-    menu_eyebrow: "MADE FOR THE MIDDLE OF THE TABLE",
-    menu_title: "A menu built for<br><em>discovery.</em>",
-    menu_desc: "Seasonal ingredients, unexpected combinations, and endless reasons to pass a plate.",
-    dish1_type: "FROM THE GARDEN",
-    dish1_title: "Freshness & character",
-    dish1_desc: "Vegetables with plenty of personality.",
-    dish2_type: "FROM THE KITCHEN",
-    dish2_title: "Comfort reimagined",
-    dish2_desc: "Big, generous plates meant for passing around.",
-    dish3_type: "AT THE TABLE",
-    dish3_title: "A joy to share",
-    dish3_desc: "Seasonal dishes are always better enjoyed together.",
-    menu_btn: "View menu highlights ↗",
-    menu_note: "Sample menu. Official photography references subject to final licensing.",
-    brunch_scribble: "weekend<br>state of mind",
-    brunch_eyebrow: "SLOW MORNINGS, GOOD COMPANY",
-    brunch_title: "Weekends are<br><em>better together.</em>",
-    brunch_desc: "Make a little time in your weekend for a table filled with your favorites and something good in hand.",
-    brunch_days: "WEEKENDS",
-    brunch_hours: "HOURS TO BE CONFIRMED",
-    brunch_btn: "Join us for brunch ↗",
-    res_eyebrow: "YOUR TABLE IS WAITING",
-    res_title: "Make an evening<br><em>of it.</em>",
-    res_desc: "The best moments happen when everyone gathers around the table.",
-    res_btn: "Reserve a table ↗",
-    res_note: "Official reservation link will be enabled once confirmed with the restaurant.",
-    visit_eyebrow: "FIND US",
-    visit_title: "Looking forward to seeing you<br><em>at the table.</em>",
-    visit_loc_label: "LOCATION",
-    visit_loc_val: "Los Angeles, California",
-    visit_loc_sub: "Official address to be confirmed",
-    visit_hours_label: "HOURS",
-    visit_hours_val: "See you soon",
-    visit_hours_sub: "Current hours to be confirmed",
-    visit_sayhello_label: "SAY HELLO",
-    visit_contact_link: "Contact the restaurant",
-    visit_contact_sub: "Official contact details coming soon",
-    visit_plan_link: "Plan your visit ↗",
-    contact_heading: "Questions or planning a gathering?",
-    contact_sub: "Official contact details coming soon.",
-    footer_tagline: "Seasonal food. Warm hospitality. Always room for more around the table.",
-    footer_gathering: "Made for gathering.",
-    footer_back_top: "Back to top ↑"
-  }
-};
-
-let currentLang = "fr";
-
-function setLanguage(lang, animate = true) {
-  if (!i18n[lang]) return;
-  currentLang = lang;
-  document.documentElement.lang = lang;
-
-  // Persist preference
-  try {
-    localStorage.setItem("gg_site_lang", lang);
-  } catch (_) {}
-
-  // Update header switcher pills
-  document.querySelectorAll(".lang-pill").forEach((btn) => {
-    const isActive = btn.dataset.lang === lang;
-    btn.classList.toggle("is-active", isActive);
-    btn.setAttribute("aria-pressed", String(isActive));
-  });
-
-  // Update hero quick chip text
-  const heroLangText = document.querySelector("#hero-lang-text");
-  if (heroLangText) {
-    heroLangText.textContent = i18n[lang].hero_lang_btn;
-  }
-  const heroLangToggle = document.querySelector("#hero-lang-toggle");
-  if (heroLangToggle) {
-    heroLangToggle.setAttribute(
-      "aria-label",
-      lang === "fr" ? "Switch site to English" : "Afficher le site en français"
-    );
-  }
-
-  // Update poster alt text
-  const poster = document.querySelector("#hero-poster-img");
-  if (poster) poster.alt = i18n[lang].stage_poster_alt;
-
-  const elements = document.querySelectorAll("[data-i18n]");
-
-  if (animate && window.gsap && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    window.gsap.to(elements, {
-      opacity: 0,
-      duration: 0.18,
-      ease: "power2.in",
-      onComplete: () => {
-        applyDict(lang);
-        window.gsap.to(elements, {
-          opacity: 1,
-          duration: 0.28,
-          ease: "power2.out"
-        });
-      }
-    });
-  } else {
-    applyDict(lang);
-  }
-
-  // Live status update for accessibility
-  const statusAnnouncer = document.querySelector("#hero-3d-status");
-  if (statusAnnouncer) {
-    statusAnnouncer.textContent =
-      lang === "fr"
-        ? "Langue changée en français."
-        : "Language switched to English.";
-  }
-}
-
-function applyDict(lang) {
-  const dict = i18n[lang];
-  document.querySelectorAll("[data-i18n]").forEach((el) => {
-    const key = el.getAttribute("data-i18n");
-    const val = dict[key];
-    if (!val) return;
-    if (val.includes("<")) {
-      el.innerHTML = val;
-    } else {
-      el.textContent = val;
-    }
-  });
-}
-
-function initLanguageSwitcher() {
-  // Listen to header pills
-  document.querySelectorAll(".lang-pill").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const targetLang = btn.dataset.lang;
-      if (targetLang && targetLang !== currentLang) {
-        setLanguage(targetLang, true);
-      }
-    });
-  });
-
-  // Listen to hero quick chip
-  const heroLangToggle = document.querySelector("#hero-lang-toggle");
-  if (heroLangToggle) {
-    heroLangToggle.addEventListener("click", () => {
-      const nextLang = currentLang === "fr" ? "en" : "fr";
-      setLanguage(nextLang, true);
-    });
-  }
-
-  // Initialize with French default (or restore user selection)
-  let savedLang = "fr";
-  try {
-    savedLang = localStorage.getItem("gg_site_lang") || "fr";
-  } catch (_) {}
-  setLanguage(savedLang, false);
 }
 
 /* ==========================================================================
@@ -766,9 +547,7 @@ function initHero3D() {
 }
 
 function startApp() {
-  initLanguageSwitcher();
   initGSAPAnimations();
-  initHero3D();
 }
 
 if (document.readyState === "loading") {

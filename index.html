@@ -28,36 +28,13 @@
 
       <!-- Actions d'en-tête & navigation -->
       <div class="site-header__right">
-        <!-- Bouton sélecteur de langue visible immédiatement -->
-        <div class="lang-switcher" role="group" aria-label="Choix de la langue / Language selection">
-          <button
-            type="button"
-            class="lang-pill is-active"
-            data-lang="fr"
-            aria-pressed="true"
-            aria-label="Afficher le site en français"
-          >
-            <span aria-hidden="true">🇫🇷</span> FR
-          </button>
-          <span class="lang-switcher__divider" aria-hidden="true">|</span>
-          <button
-            type="button"
-            class="lang-pill"
-            data-lang="en"
-            aria-pressed="false"
-            aria-label="Switch site to English"
-          >
-            EN
-          </button>
-        </div>
-
         <nav class="primary-navigation" id="primary-navigation" aria-label="Navigation principale">
-          <a href="about.html" data-i18n="nav_story">Notre histoire</a>
-          <a href="menu.html" data-i18n="nav_menu">Menu</a>
-          <a href="brunch.html" data-i18n="nav_brunch">Brunch</a>
-          <a href="gallery.html" data-i18n="nav_gallery">Galerie</a>
-          <a href="contact.html" data-i18n="nav_visit">Venir</a>
-          <a class="button button--small" href="reservations.html" data-i18n="nav_reserve">Réserver une table <span aria-hidden="true">↗</span></a>
+          <a href="about.html">Notre histoire</a>
+          <a href="menu.html">Menu</a>
+          <a href="brunch.html">Brunch</a>
+          <a href="gallery.html">Galerie</a>
+          <a href="contact.html">Venir</a>
+          <a class="button button--small" href="reservations.html">Réserver une table <span aria-hidden="true">↗</span></a>
         </nav>
 
         <button
@@ -66,7 +43,7 @@
           aria-expanded="false"
           aria-controls="primary-navigation"
         >
-          <span class="menu-toggle__label" data-i18n="nav_toggle">Menu</span>
+          <span class="menu-toggle__label">Menu</span>
           <span class="menu-toggle__icon" aria-hidden="true"><i></i><i></i></span>
         </button>
       </div>
@@ -76,17 +53,7 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero__copy">
           <div class="hero__top-bar">
-            <p class="eyebrow" data-i18n="hero_eyebrow"><span class="eyebrow__dot"></span> LOS ANGELES · CALIFORNIE</p>
-            <button
-              type="button"
-              class="hero-lang-chip"
-              id="hero-lang-toggle"
-              aria-label="Switch site to English"
-            >
-              <span class="hero-lang-chip__globe" aria-hidden="true">🌐</span>
-              <span id="hero-lang-text">Switch to English</span>
-              <span class="hero-lang-chip__arrow" aria-hidden="true">↗</span>
-            </button>
+            <p class="eyebrow"><span class="eyebrow__dot"></span> LOS ANGELES · CALIFORNIE</p>
           </div>
           <h1 id="hero-title" data-i18n="hero_title">Venez le ventre vide.<br /><em>Repartez inspirés.</em></h1>
           <p class="hero__intro" data-i18n="hero_intro">
@@ -103,12 +70,11 @@
         </div>
 
         <div class="hero-stage" id="hero-stage" data-model="assets/3d/hero-table.glb" data-poster="assets/3d/hero-table-poster.webp">
-          <!-- Immediate high-res photo poster -->
+          <!-- High-resolution still render of the Blender tabletop model -->
           <picture class="hero-stage__picture">
             <source srcset="assets/3d/hero-table-poster.webp" type="image/webp" />
-            <source srcset="assets/3d/hero-table-poster.jpg" type="image/jpeg" />
             <img
-              src="assets/3d/hero-table-poster.png"
+              src="assets/3d/hero-table-poster.webp"
               alt="Une table de restaurant servie avec des verres de vin rouge et un apéritif vous attend"
               class="hero-stage__poster"
               id="hero-poster-img"
@@ -208,7 +174,6 @@
           <h2 id="reservation-title" data-i18n="res_title">Offrez-vous une belle<br /><em>soirée.</em></h2>
           <p data-i18n="res_desc">Les plus beaux moments naissent lorsque tout le monde se réunit autour de la table.</p>
           <a class="button button--cream" href="reservations.html" data-i18n="res_btn">Réserver une table <span aria-hidden="true">↗</span></a>
-          <small data-i18n="res_note">Lien officiel de réservation ajouté après confirmation du restaurant.</small>
         </div>
         <div class="reservation-band__decoration" aria-hidden="true">G&amp;G</div>
       </section>
@@ -252,7 +217,6 @@
       <div class="site-footer__bottom">
         <span>© <span id="current-year"></span> Girl &amp; the Goat Los Angeles</span>
         <span data-i18n="footer_gathering">Fait pour se rassembler.</span>
-        <a href="#top" data-i18n="footer_back_top">Haut de page ↑</a>
       </div>
     </footer>
   </body>
