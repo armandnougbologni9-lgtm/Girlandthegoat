@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Maquette d’administration — Girl &amp; the Goat</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+<div class="prototype-notice" role="note"><strong>Maquette uniquement.</strong> Aucune connexion, aucun backend ni aucune base de données ne sont reliés. Les notifications de commandes ne sont pas actives. Ne déployez pas cet écran.</div>
+  <div class="admin-shell">
+    <aside class="sidebar" aria-label="Navigation de l’administration">
+      <a class="brand" href="#overview"><span>girl <i>&amp;</i> the goat</span><small>LOS ANGELES · ADMIN</small></a>
+      <p class="nav-label">ESPACE DE TRAVAIL</p>
+      <nav>
+        <a class="nav-item nav-item--active" href="#overview" aria-current="page"><span aria-hidden="true">⌂</span> Vue d’ensemble</a>
+        <a class="nav-item" href="#content"><span aria-hidden="true">▤</span> Pages et contenus</a>
+        <a class="nav-item" href="#media"><span aria-hidden="true">▧</span> Médiathèque</a>
+<a class="nav-item" href="#notifications"><span aria-hidden="true">✉</span> Notifications</a>
+        <a class="nav-item" href="#settings"><span aria-hidden="true">⚙</span> Paramètres du site</a>
+      </nav>
+      <div class="sidebar-bottom"><span class="environment-dot"></span> Aperçu de conception local</div>
+    </aside>
+    <main id="main" class="main-panel">
+      <header class="topbar"><div><p class="breadcrumb">Workspace <span>/</span> Vue d’ensemble</p><span class="environment-label">MAQUETTE LOCALE</span></div><div class="profile"><span class="avatar" aria-hidden="true">G</span><span>Équipe du restaurant<small>Aperçu uniquement</small></span></div></header>
+      <section id="overview" class="page-heading"><div><p class="eyebrow">CONTENT ESPACE DE TRAVAIL</p><h1>Bonjour.</h1><p>Voici un aperçu de l’espace de gestion des contenus.</p></div><a class="primary-action" href="#content">Vérifier les contenus <span aria-hidden="true">→</span></a></section>
+      <section class="status-cards" aria-label="Aperçu des contenus de démonstration">
+        <article class="status-card"><span class="card-icon card-icon--sage" aria-hidden="true">▤</span><div><p>Pages</p><strong>7 <small>example</small></strong></div><span class="card-foot">Public site sections</span></article>
+        <article class="status-card"><span class="card-icon card-icon--gold" aria-hidden="true">◷</span><div><p>Brouillons à vérifier</p><strong>3 <small>example</small></strong></div><span class="card-foot">En attente d’approbation</span></article>
+        <article class="status-card"><span class="card-icon card-icon--clay" aria-hidden="true">▧</span><div><p>Droits des médias</p><strong>2 <small>example</small></strong></div><span class="card-foot">Détails d’utilisation requis</span></article>
+      </section>
+      <section id="content" class="content-panel" aria-labelledby="content-title">
+        <div class="panel-heading"><div><p class="eyebrow">CONTENT ESPACE DE TRAVAIL</p><h2 id="content-title">Pages et contenus</h2></div><span class="demo-tag">Données illustratives</span></div>
+        <div class="table-scroll"><table><thead><tr><th scope="col">Page</th><th scope="col">Statut</th><th scope="col">Dernière mise à jour</th><th scope="col">Responsable</th></tr></thead><tbody>
+          <tr><th scope="row"><span class="page-mark">H</span> Accueil</th><td><span class="status status--draft">Brouillon</span></td><td>Exemple uniquement</td><td>Équipe du restaurant</td></tr>
+          <tr><th scope="row"><span class="page-mark">M</span> Menu</th><td><span class="status status--review">À vérifier</span></td><td>Exemple uniquement</td><td>Équipe du restaurant</td></tr>
+          <tr><th scope="row"><span class="page-mark">V</span> Visite & contact &amp; contact</th><td><span class="status status--draft">Brouillon</span></td><td>Exemple uniquement</td><td>Équipe du restaurant</td></tr>
+        </tbody></table></div>
+        <p class="table-note">Lignes d’exemple uniquement. Les vrais brouillons, aperçus, validations et publications nécessitent le backend.</p>
+      </section>
+      <div class="lower-grid">
+        <section id="media" class="mini-panel"><p class="eyebrow">MÉDIATHÈQUE</p><h2>Gardez une trace de chaque ressource.</h2><p>Avant publication, consignez la source, les droits d’utilisation, le crédit, le texte alternatif et l’approbation.</p><a href="../../assets-source/asset-manifest.md">Ouvrir le registre des ressources <span aria-hidden="true">↗</span></a></section>
+<section id="notifications" class="mini-panel"><p class="eyebrow">COMMANDES ET MESSAGES</p><h2>Notifications par courriel</h2><p>Chaque commande en ligne doit déclencher une notification dans la boîte officielle du restaurant. Le prestataire de commande, le service de messagerie et l’adresse destinataire restent à confirmer.</p><p class="table-note">Sans base de données, ce tableau de bord ne peut conserver une boîte de réception ni un historique des commandes. Le courriel sera le canal de référence.</p><span class="pending-label">Non configuré</span></section>
+<section id="settings" class="mini-panel mini-panel--warm"><p class="eyebrow">PROCHAINE ÉTAPE</p><h2>Connecter le système de gestion des contenus.</h2><p>L’authentification, les rôles, l’historique des contenus enregistrés dans des fichiers et la publication dépendent des choix d’hébergement et de backend.</p><span class="pending-label">Hébergement à confirmer</span></section>
+      </div>
+      <footer class="admin-footer"><span>Girl &amp; the Goat · Maquette d’administration locale</span><span>Non reliée à un site en ligne</span></footer>
+    </main>
+  </div>
+</body>
+</html>

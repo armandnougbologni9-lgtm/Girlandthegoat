@@ -1,0 +1,16 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Build output and dependencies
+node_modules/
+dist/
+
+# Local editor and operating system files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Blender autosave backup
+*.blend1
