@@ -233,13 +233,6 @@ function initGSAPAnimations() {
       opacity: 0,
       duration: 0.7
     }, "-=0.4")
-    .from(".hero-stage", {
-      scale: 0.95,
-      y: 22,
-      opacity: 0,
-      duration: 1.15,
-      ease: "power3.out"
-    }, "-=0.8")
     .from(".hero__scroll", {
       opacity: 0,
       duration: 0.75

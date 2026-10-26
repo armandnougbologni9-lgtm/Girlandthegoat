@@ -12,8 +12,6 @@
     <link rel="stylesheet" href="styles.css" />
     <script src="assets/vendor/gsap.min.js" defer></script>
     <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
-    <script src="assets/vendor/three.min.js" defer></script>
-    <script src="assets/vendor/GLTFLoader.js" defer></script>
     <script src="app.js" defer></script>
   </head>
   <body>
@@ -50,7 +48,7 @@
     </header>
 
     <main id="main">
-      <section class="hero" aria-labelledby="hero-title">
+      <section class="hero hero--text-only" aria-labelledby="hero-title">
         <div class="hero__copy">
           <div class="hero__top-bar">
             <p class="eyebrow"><span class="eyebrow__dot"></span> LOS ANGELES · CALIFORNIE</p>
@@ -69,38 +67,6 @@
           </div>
         </div>
 
-        <div class="hero-stage" id="hero-stage" data-model="assets/3d/hero-table.glb" data-poster="assets/3d/hero-table-poster.webp">
-          <!-- High-resolution still render of the Blender tabletop model -->
-          <picture class="hero-stage__picture">
-            <source srcset="assets/3d/hero-table-poster.webp" type="image/webp" />
-            <img
-              src="assets/3d/hero-table-poster.webp"
-              alt="Une table de restaurant servie avec des verres de vin rouge et un apéritif vous attend"
-              class="hero-stage__poster"
-              id="hero-poster-img"
-              fetchpriority="high"
-              width="1200"
-              height="800"
-            />
-          </picture>
-
-          <!-- 3D WebGL viewport canvas -->
-          <div class="hero-stage__viewport" id="hero-3d-viewport" aria-hidden="true">
-            <canvas id="hero-3d-canvas" class="hero-stage__canvas" aria-label="Une table de restaurant servie avec des verres de vin rouge et un apéritif vous attend"></canvas>
-          </div>
-
-          <!-- HTML caption and descriptive metadata -->
-          <div class="hero-stage__overlay">
-            <div class="hero-stage__caption">
-              <p class="hero-stage__desc" data-i18n="stage_desc">Une table de restaurant servie avec des verres de vin rouge et un apéritif vous attend.</p>
-            </div>
-          </div>
-
-          <!-- Live status announcement for screen readers and fallbacks -->
-          <div class="sr-only" id="hero-3d-status" role="status" aria-live="polite">
-            Une table de restaurant servie avec des verres de vin rouge et un apéritif vous attend.
-          </div>
-        </div>
         <div class="hero__scroll" aria-hidden="true"><span></span> <span data-i18n="hero_scroll">DÉFILER POUR EXPLORER</span></div>
       </section>
 
